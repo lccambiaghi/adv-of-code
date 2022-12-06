@@ -25,11 +25,21 @@
     (letter->number (first intersection))
     ))
 
+(defn calculate-group-priority [group]
+  (let [sets         (map set group)
+        intersection (reduce clojure.set/intersection sets)]
+    (letter->number (first intersection))
+    ))
 
-(let [file-content   (slurp "data/day-three.txt")
-      lines          (->> file-content (str/split-lines))
-      lines-priority (->> lines (map calculate-line-priority))
+
+(let [file-content    (slurp "data/day-three.txt")
+      lines           (->> file-content (str/split-lines))
+      ;; first task
+      lines-priority  (->> lines (map calculate-line-priority))
+      ;; second task
+      groups          (->> lines (partition 3))
+      groups-priority (->> groups (map calculate-group-priority))
       ]
-  (reduce + lines-priority)
+  ;; (reduce + lines-priority)
+  (reduce + groups-priority)
   )
-;; 7826
