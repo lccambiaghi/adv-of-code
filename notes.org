@@ -53,3 +53,59 @@
   + Identify whether one of the two ranges is fully included in the other
 - Output
   + Number of lines where the condition is true
+* Day five
+- Input:
+  + First block is initial state of the queues
+    * State looks like this:
+#+begin_src 
+    [D]    
+[N] [C]    
+[Z] [M] [P]
+ 1   2   3 
+#+end_src
+  + Second block is series of instruction
+    * Instruction looks like this:
+#+begin_src 
+move 4 from 2 to 1
+#+end_src
+- Transform:
+  + Parse initial state in queues
+  + Move elements from one queue to another
+- Output:
+  + The letter at the top of the crates, e.g. ~NDP~ in the initial state
+
+* Day six
+- Input:
+  + One line
+- First transform:
+  + Find first char such that
+    * Taken that char + previous 3 chars
+    * 4 chars are different
+- Second transform:
+  + Same as first transform, but consider groups of 14 chars
+- Output:
+  + Index of that char (1-based-indexing)
+* Day seven
+- Input:
+  + Lines
+  + Each line is either a command (~$ cd dir~, ~$ ls~) 
+  + or the output of ~ls~ which shows folders and files inside e.g.
+#+begin_src 
+dir gjc
+dir lcz
+218543 ndqmcv
+dir qnj
+dir rrdd
+dir zppsglq
+#+end_src
+- First transform:
+  + Build the file system tree based on the output
+  + Compute size of directories
+- Second transform:
+  + Total disk is 70.000.000
+  + We need 30.000.000 free
+  + Get size of outmost directory
+  + Calculate space_to_free = 30M - size_outmost_directory
+  + Find smallest directory bigger than space_to_free
+- Output:
+  + Total size of directories, considering directories with a maximum size of 100.000
