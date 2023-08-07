@@ -109,3 +109,28 @@ dir zppsglq
   + Find smallest directory bigger than space_to_free
 - Output:
   + Total size of directories, considering directories with a maximum size of 100.000
+* Day twelve
+- Input:
+  + Text file with a matrix
+  + Each element is a lowercase letter, which maps to an height (a->1, ...)
+  + S indicates Start, E indicates End
+- First transform
+  + We need to go from S to E
+  + We can move up, down, right, left
+  + We can only move to a cell if delta<=1
+- Outputs:
+  + Minimum number of steps to go from S to E
+* Day thirteen
+- Input:
+  + Lines
+  + Each line includes a list
+  + Each element of the list can either be an int or a list
+  + Pairs of lines need to be compared
+- First transform
+  + Compare lines element-wise
+  + If comparing 2 ints, "left" element needs to be <= "right" element
+  + If one element is a list and the other is an int, convert the int to a list
+  + If right side runs out of elements, it is not right order
+  + If left side runs out of elements, it is right order
+- Outputs:
+  + Find indices of pairs in right order. Sum of the indices
