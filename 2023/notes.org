@@ -1,0 +1,52 @@
+
+* Mojo
+** Basics
+
+Only reads values:
+
+#+begin_src mojo
+fn add(borrowed x: Int, borrowed y: Int) -> Int:
+    return x + y
+#+end_src
+
+Changes value outside function:
+
+#+begin_src mojo
+fn add_inout(inout x: Int, inout y: Int) -> Int:
+    x += 1
+    y += 1
+    return x + y
+#+end_src
+
+Makes a copy:
+
+#+begin_src mojo
+fn set_fire(owned text: String) -> String:
+    text += "🔥"
+    return text
+#+end_src
+
+** Vectors
+
+In the definition =[DType.uint8, 4]= are known as parameters which means they must
+be compile-time known, while =(1, 2, 3, 4)= are the arguments which can be
+compile-time or runtime known.
+
+#+begin_src mojo
+from DType import DType
+
+y = SIMD[DType.uint8, 4](1, 2, 3, 4)
+#+end_src
+
+This is now a vector of 8 bit numbers that are packed into 32 bits, we can perform a single instruction across all of it instead of 4 separate instructions:
+
+* Exercises
+** Day 2 - part one
+
+- 12 red cubes, 13 green cubes, 14 blue cubes
+- For each row:
+  - For each set (separated by =;=):
+    - For each cubes (separated by =,=):
+      - Parse number and color
+      - Check if configuration is impossible
+- If row is possible, add that ID to the result
